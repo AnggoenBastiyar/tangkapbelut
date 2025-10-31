@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangkap Belut Nusantara</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>  
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="soundgame" src="assets/soundgame.mp3" loop></audio>
+
+    <!-- Menu Screen -->
+    <div id="menuScreen" class="menu-screen">
+        <div class="rice-bg"></div>
+        <div class="menu-buttons">
+            <button class="btn" onclick="showTutorial()">📚 Tutorial</button>
+            <button class="btn" onclick="startGame()">🎮 Mulai Game</button>
+            <button class="btn" onclick="showLeaderboard()">🏆 Leaderboard</button>
+            <button class="btn" onclick="showCredits()">👨‍💻 Credits</button>
+        </div>
+    </div>
+
+    <!-- Game Container -->
+    <div id="gameContainer" class="game-container hidden">
+        <div class="rice-bg"></div>
+        <div class="hud">
+            Skor: <span id="score">0</span>
+        </div>
+        <div class="timer">
+            Waktu: <span id="timer">60</span>s
+        </div>
+        <div class="pond" id="pond">
+            <div class="hand" id="hand"></div>
+        </div>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorialModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>📚 Cara Bermain</h2>
+            <p><strong>🎯 Tujuan:</strong> Tangkap sebanyak mungkin belut dalam 60 detik!</p>
+            <p><strong>🕹️ Kontrol:</strong></p>
+            <p>• Gunakan <strong>mouse</strong> untuk menggerakkan tangan</p>
+            <p>• Tekan <strong>SPASI</strong> untuk menangkap belut</p>
+            <p><strong>📊 Item:</strong></p>
+            <p>🐍 <strong>Belut</strong> → +10 poin</p>
+            <p>🌾 <strong>Padi</strong> → +5 poin bonus</p>
+            <p>🐸 <strong>Katak</strong> → -5 poin (jangan tangkap!)</p>
+            <p><em>Belut bergerak lincah dan licin, jadi hati-hati!</em></p>
+            <button class="btn" onclick="closeTutorial()">Mengerti!</button>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>🏆 Leaderboard</h2>
+            <div class="leaderboard" id="leaderboardContent">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Peringkat</th>
+                            <th>Nama</th>
+                            <th>Skor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn" onclick="closeLeaderboard()">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Credits Modal -->
+    <div id="creditsModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>👨‍💻 Credits</h2>
+            <p><strong>XI PPLG 2</strong></p>
+            <p>Assets : Salwa, Zaza, Lyvina, Yihan</p>
+            <p>Game dev : Claude AI & Yihan </p>
+            <p>Team : Selvy, Zelda, Elva</p>
+            <p></p>
+            <p><em>© 2025 Kelompok 1</em></p>
+            <button class="btn" onclick="closeCredits()">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal hidden">
+        <div class="modal-content game-over-modal">
+            <h2>🎮 Game Selesai!</h2>
+            <p>Skor Akhir: <span id="finalScore">0</span></p>
+            <p id="newRecordMsg" class="hidden" style="color: #ffd700; font-weight: bold;">🎉 REKOR BARU! 🎉</p>
+            <input type="text" id="playerName" placeholder="Masukkan nama Anda" style="padding: 10px; margin: 10px; border-radius: 5px; border: none; font-size: 16px;">
+            <br>
+            <button class="btn" onclick="saveScore()">💾 Simpan Skor</button>
+            <button class="btn" onclick="restartGame()">🔄 Main Lagi</button>
+            <button class="btn" onclick="backToMenu()">🏠 Menu Utama</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
